@@ -7,8 +7,8 @@ export default function Banner() {
                 <Image src="/images/z-bg.svg" alt="Background decorativo" fill className="object-cover top-0 left-0 right-0 lg:overflow-visible" quality={100} />
                 <h1 className="sr-only">Triz Agency</h1>
                 <div className="lg:max-w-[321px] z-10">
-                    <h2 className="text-6xl text-left">
-                        O <strong>instante</strong> <br /> onde tudo <br /> <strong>começa.</strong>
+                    <h2 className="lg:text-6xl text-4xl text-left">
+                        O <strong>instante</strong> <br className="hidden lg:block" /> onde tudo <br className="hidden lg:block" /> <strong>começa.</strong>
                     </h2>
                 </div>
 
