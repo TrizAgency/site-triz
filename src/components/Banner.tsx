@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Banner() {
     return (
         <>
-            <section className="relative flex flex-col lg:flex-row lg:items-center justify-evenly text-center bg-beige lg:h-[70svh] lg:py-80 pt-20 h-[90svh] px-7 z-10" id="banner">
+            <section className="relative flex flex-col lg:flex-row lg:items-center justify-evenly text-center bg-beige lg:h-[70svh] lg:py-80 h-[70svh] px-7 z-10" id="banner">
                 <Image src="/images/z-bg.svg" alt="Background decorativo" fill className="object-cover top-0 left-0 right-0 lg:overflow-visible" quality={100} />
                 <h1 className="sr-only">Triz Agency</h1>
                 <div className="lg:max-w-[321px] z-10">

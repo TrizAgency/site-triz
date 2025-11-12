@@ -34,7 +34,7 @@ export default function Header(className: { className?: string }) {
   ];
   return (
     <>
-      <header className="container fixed top-5 left-0 right-0 z-20 rounded-3xl shadow bg-beige transition-all duration-300 ease-in-out hidden lg:block">
+      <header className="container fixed top-5 left-0 right-0 z-30 rounded-3xl shadow bg-beige transition-all duration-300 ease-in-out hidden lg:block">
         <div className="flex items-center justify-between">
           <Link href="/" title="Triz" className="pl-12 py-5">
             <Image src="/images/logo-novo.svg" alt="Logo Triz" width={90} height={95} quality={100} />

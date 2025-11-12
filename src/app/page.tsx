@@ -14,7 +14,7 @@ export default function Home() {
     <main className="bg-beige">
       <CookieBanner />
       <Header />
-      {/* <Video /> */}
+      <Video />
       <Banner />
       {/* <About /> */}
       {/* <People /> */}
