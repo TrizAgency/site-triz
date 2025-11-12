@@ -15,7 +15,7 @@ export default function Video({className}: Readonly<{className?: string}>) {
   }, []);
 
   return (
-    <section className={`${className} lg:h-[100svh] md:h-[90svh] h-[60svh] relative w-screen top-0 left-0 bg-beige video-container`}>
+    <section className={`${className} lg:h-[100svh] md:h-[90svh] h-[62svh] relative w-screen top-0 left-0 bg-beige video-container`}>
       {isMobile === false && (
         <video
           src={"/videos/video-triz-desktop.mp4"}
