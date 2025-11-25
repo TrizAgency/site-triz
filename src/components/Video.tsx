@@ -18,8 +18,8 @@ export default function Video({className}: Readonly<{className?: string}>) {
     <section className={`${className} lg:h-[100svh] md:h-[90svh] h-[62svh] relative w-screen top-0 left-0 bg-beige video-container`}>
       {isMobile === false && (
         <video
-          src={"/videos/video-triz-desktop.mp4"}
-          poster={"/images/home-inicial.png"}
+          src={"/videos/video-triz-desktop-novo.mp4"}
+          // poster={"/images/home-inicial.png"}
           className="absolute inset-0 z-20 h-full w-full object-cover hidden lg:block"
           autoPlay
           playsInline
@@ -32,7 +32,7 @@ export default function Video({className}: Readonly<{className?: string}>) {
       )}
       {isMobile === true && (
         <video
-          src={"/videos/video-triz-mobile.mp4"}
+          src={"/videos/video-triz-mobile-novo.mp4"}
           // poster={"/images"}
           className="absolute inset-0 z-10 w-full object-contain block lg:hidden"
           autoPlay
