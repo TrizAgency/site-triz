@@ -4,6 +4,12 @@ import Image from "next/image";
 import { useState } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 
+// TypeScript declaration for Meta Pixel
+declare global {
+  interface Window {
+    fbq?: (...args: any[]) => void;
+  }
+}
 export default function Contact() {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -40,6 +46,9 @@ export default function Contact() {
       setLoading(false);
       console.log(result);
       setSuccess(true);
+      if (window.fbq) {
+        window.fbq('track', 'Lead');
+      }
     } else {
       setLoading(false);
       console.log(result);
