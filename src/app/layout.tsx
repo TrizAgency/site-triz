@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const mundial = localFont({
   src: "../fonts/mundial-regular.woff2",
@@ -27,6 +28,7 @@ export default function RootLayout({
       >
         {children}
       </body>
+      <GoogleAnalytics gaId="G-G7THS1FJPZ" />
       <Script
         strategy="lazyOnload" 
         dangerouslySetInnerHTML={{

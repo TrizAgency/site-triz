@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { sendGAEvent } from "@next/third-parties/google";
 
 // TypeScript declaration for Meta Pixel
 declare global {
@@ -49,6 +50,11 @@ export default function Contact() {
       if (window.fbq) {
         window.fbq('track', 'Lead');
       }
+      sendGAEvent('event', 'generate_lead', {
+        currency: 'BRL',
+        value: 0,
+        lead_source: 'Triz website contact form'
+      });
     } else {
       setLoading(false);
       console.log(result);
