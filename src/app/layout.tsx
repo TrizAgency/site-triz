@@ -3,7 +3,13 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import "./globals.css";
 
-export const metadata: Metadata = {title:"Triz Agency — Estratégia, criação e performance",description:"Gestão de mídia paga orientada por dados. Planejamos, criamos, analisamos e otimizamos campanhas com foco em performance."};
+export const metadata: Metadata = {
+  title: "Triz Agency — Estratégia, criação e performance",
+  description: "Gestão de mídia paga orientada por dados. Planejamos, criamos, analisamos e otimizamos campanhas com foco em performance.",
+  other: {
+    "facebook-domain-verification": "koq3u1wuwyf3scyrkbgfmyam6ch6bu",
+  },
+};
 export default function RootLayout({children}:{children:React.ReactNode}) {
   return (
     <html lang="pt-BR">
