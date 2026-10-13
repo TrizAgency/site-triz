@@ -18,7 +18,7 @@ const people = [
 ];
 
 function Cta({ small = false }: { small?: boolean }) {
-  return <a className={`cta ${small ? "cta-small" : ""}`} href="https://form.respondi.app/418Ad20g" target="_blank" rel="noopener noreferrer"><span>Falar com a Triz</span><span className="cta-icon"><img src={img("imgSeta1")} alt="" /></span></a>;
+  return <button onClick={() => (window as any).fbq?.("track", "Lead")} className={`cta ${small ? "cta-small" : ""}`}>Falar com a Triz</button>;
 }
 
 export default function Home() {
