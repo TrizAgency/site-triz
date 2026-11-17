@@ -17,10 +17,53 @@ const people = [
   {name:"Victória Grossi", role:"Estratégia criativa", photo:"imgFotoVictoriaGrossi-clean", before:"Publicitária especializada em ", emphasis:"Direção de Arte e Branding", after:". Responsável por transformar dados em conceitos, mensagens e criativos."},
 ];
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
+function gtag_report_conversion(url: string, destination: Window | null) {
+  let navigated = false;
+  const navigate = () => {
+    if (navigated) return;
+    navigated = true;
+
+    if (destination && !destination.closed) {
+      destination.location.href = url;
+    } else {
+      window.location.href = url;
+    }
+  };
+
+  if (typeof window.gtag !== "function") {
+    navigate();
+    return;
+  }
+
+  window.gtag("event", "manual_event_SUBMIT_LEAD_FORM", {
+    event_callback: navigate,
+    event_timeout: 2000,
+  });
+  window.setTimeout(navigate, 2000);
+}
+
 function Cta({ small = false }: { small?: boolean }) {
-  return <button  onClick={() => (window as any).fbq?.("track", "Lead")}>
-    <a className={`cta ${small ? "cta-small" : ""}`} href="https://form.respondi.app/418Ad20g" target="_blank" rel="noopener noreferrer"><span>Falar com a Triz</span><span className="cta-icon"><img src={img("imgSeta1")} alt="" /></span></a>
-  </button>;
+  return <a
+    className={`cta ${small ? "cta-small" : ""}`}
+    href="https://form.respondi.app/418Ad20g"
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={(event) => {
+      event.preventDefault();
+      window.fbq?.("track", "Lead");
+      const destination = window.open("about:blank", "_blank");
+      gtag_report_conversion(event.currentTarget.href, destination);
+    }}
+  >
+    <span>Falar com a Triz</span><span className="cta-icon"><img src={img("imgSeta1")} alt="" /></span>
+  </a>;
 }
 
 export default function Home() {
