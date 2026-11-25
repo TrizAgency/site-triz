@@ -106,6 +106,33 @@ img{display:block}
 .contact-glow{position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(221,255,187,.4),rgba(221,255,187,.1) 40%,transparent 70%);filter:blur(50px)}
 .illustration-frame{position:relative;width:547px;height:396px}
 .illustration-frame>div{width:547px;height:396px}
+.contact-form-section{scroll-margin-top:32px;border-radius:48px;padding:64px 72px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(400px,1fr);align-items:center;gap:72px}
+.contact-form-copy{display:flex;flex-direction:column;align-items:flex-start;gap:28px}
+.contact-form-copy .display-heading{font-size:56px;white-space:normal}
+.contact-form-copy p{font-size:20px;line-height:1.45;font-weight:300;color:rgba(251,242,230,.78);margin:0;max-width:440px}
+.contact-form-area{width:100%}
+.contact-form{display:flex;flex-direction:column;gap:16px;width:100%}
+.contact-form input:not([type="hidden"]):not([type="checkbox"]),.contact-form select{width:100%;min-height:54px;padding:14px 20px;border:1px solid rgba(251,242,230,.35);border-radius:999px;outline:none;background:rgba(251,242,230,.04);color:var(--cream);font:inherit;font-size:17px}
+.contact-form input::placeholder{color:rgba(251,242,230,.68)}
+.contact-form input:focus,.contact-form select:focus{border-color:var(--lime)}
+.revenue-dropdown{position:relative;width:100%;z-index:2}
+.revenue-trigger{width:100%;min-height:56px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px;border:1px solid rgba(251,242,230,.35);border-radius:999px;background:rgba(251,242,230,.04);color:rgba(251,242,230,.68);font-size:17px;text-align:left;transition:border-color .18s,background .18s,border-radius .18s}
+.revenue-trigger:hover,.revenue-dropdown.is-open .revenue-trigger,.revenue-trigger:focus-visible{border-color:var(--lime);outline:none}
+.revenue-trigger.has-value{color:var(--cream)}
+.revenue-dropdown.is-open .revenue-trigger{border-radius:24px;background:#3b3b3b}
+.revenue-trigger>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.revenue-chevron{width:10px;height:10px;flex:none;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-3px);transition:transform .18s}
+.revenue-dropdown.is-open .revenue-chevron{transform:rotate(225deg) translate(-2px,-1px)}
+.revenue-options{position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:5;max-height:220px;overflow:auto;padding:8px;border:1px solid rgba(221,255,187,.5);border-radius:22px;background:#292929;box-shadow:0 18px 40px rgba(0,0,0,.35);animation:revenue-menu-in .16s ease-out}
+.revenue-option{display:block;width:100%;padding:12px 14px;border:0;border-radius:14px;background:transparent;color:rgba(251,242,230,.88);font-size:16px;text-align:left;transition:background .15s,color .15s}
+.revenue-option:hover,.revenue-option:focus-visible,.revenue-option.is-active{outline:none;background:rgba(221,255,187,.12);color:var(--lime)}
+.revenue-option[aria-selected="true"]{background:rgba(221,255,187,.16);color:var(--lime)}
+@keyframes revenue-menu-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+.contact-form-submit{align-self:flex-end;padding:13px 30px;border:1px solid var(--lime);border-radius:999px;background:var(--lime);color:#333;font-size:18px;font-weight:600;transition:opacity .2s}
+.contact-form-submit:hover{opacity:.88}
+.contact-form-submit:disabled{opacity:.5;cursor:default}
+.contact-form-captcha{display:flex;justify-content:flex-end;width:100%}
+.contact-form-message{font-size:22px;line-height:1.45;color:var(--cream);margin:0}
 .footer{border-top:1px solid rgba(251,242,230,.14);padding-top:36px}
 .footer-main{display:flex;align-items:center;justify-content:space-between}
 .footer-main img{display:block;max-width:none}
@@ -183,6 +210,18 @@ img{display:block}
   .contact-glow{width:360px;height:360px}
   .illustration-frame{width:305px;height:221px}
   .illustration-frame>div{transform:scale(.5576);transform-origin:top left}
+  .contact-form-section{border-radius:32px;padding:32px 24px;display:flex;flex-direction:column;gap:28px;text-align:center}
+  .contact-form-copy{align-items:center;gap:22px}
+  .contact-form-copy .display-heading{font-size:36px}
+  .contact-form-copy p{font-size:15px;line-height:1.45}
+  .contact-form{gap:12px}
+  .contact-form input:not([type="hidden"]):not([type="checkbox"]){min-height:50px;padding:12px 17px;font-size:15px}
+  .revenue-trigger{min-height:50px;padding:12px 17px;font-size:15px}
+  .revenue-options{max-height:200px;padding:6px;border-radius:18px}
+  .revenue-option{padding:12px;font-size:15px}
+  .contact-form-submit{font-size:16px;padding:12px 26px}
+  .contact-form-captcha{justify-content:center;overflow-x:auto}
+  .contact-form-message{font-size:18px}
   .footer{padding-top:15px}
   .footer-main{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
   .footer-main>a{width:86px;height:68px}.footer-main img{transform:scale(.75);transform-origin:top left}

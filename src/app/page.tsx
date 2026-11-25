@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import FigmaIllustration from "@/components/FigmaIllustration";
+import ContactForm from "@/components/ContactForm";
 
 const img = (name: string, ext = "svg") => `/figma/${name}.${ext}`;
 const services = [
@@ -24,44 +25,8 @@ declare global {
   }
 }
 
-function gtag_report_conversion(url: string, destination: Window | null) {
-  let navigated = false;
-  const navigate = () => {
-    if (navigated) return;
-    navigated = true;
-
-    if (destination && !destination.closed) {
-      destination.location.href = url;
-    } else {
-      window.location.href = url;
-    }
-  };
-
-  if (typeof window.gtag !== "function") {
-    navigate();
-    return;
-  }
-
-  window.gtag("event", "manual_event_SUBMIT_LEAD_FORM", {
-    event_callback: navigate,
-    event_timeout: 2000,
-  });
-  window.setTimeout(navigate, 2000);
-}
-
 function Cta({ small = false }: { small?: boolean }) {
-  return <a
-    className={`cta ${small ? "cta-small" : ""}`}
-    href="https://form.respondi.app/418Ad20g"
-    target="_blank"
-    rel="noopener noreferrer"
-    onClick={(event) => {
-      event.preventDefault();
-      window.fbq?.("track", "Lead");
-      const destination = window.open("about:blank", "_blank");
-      gtag_report_conversion(event.currentTarget.href, destination);
-    }}
-  >
+  return <a className={`cta ${small ? "cta-small" : ""}`} href="#contato">
     <span>Falar com a Triz</span><span className="cta-icon"><img src={img("imgSeta1")} alt="" /></span>
   </a>;
 }
@@ -114,10 +79,11 @@ export default function Home() {
     <section id="especialistas" className="specialists page-width" aria-labelledby="specialists-title">
       <h2 id="specialists-title" className="display-heading">Especialistas Triz</h2><div className="people-grid">{people.map(p=><article className="person-card glass-panel" key={p.name}><img className="person-photo" src={img(p.photo,"png")} alt={p.name}/><div className="person-copy"><h3>{p.name}</h3><span className="role-chip">{p.role}</span><p>{p.before}<em>{p.emphasis}</em>{p.after}</p></div></article>)}</div>
     </section>
-    <section id="contato" className="contact page-width glass-panel" aria-labelledby="contact-title">
+    <section className="contact page-width glass-panel" aria-labelledby="contact-title">
       <div className="contact-copy"><span className="pill"><span className="pill-dot" />Contato</span><h2 id="contact-title">Vamos falar sobre o <em>próximo passo da sua mídia?</em></h2><p>Conte um pouco sobre o seu negócio, seus objetivos e o momento atual da operação.</p><p>A partir disso, entendemos onde a Triz pode entrar e como estruturar uma estratégia de mídia mais inteligente para a sua marca.</p><Cta /></div>
       <div className="contact-visual"><div className="contact-glow" /><div className="illustration-frame"><FigmaIllustration /></div></div>
     </section>
+    <ContactForm />
     <footer className="footer page-width"><div className="footer-main"><a href="#home" aria-label="Voltar ao início"><img src={img("imgLogoTrizAgency")} alt="Triz Agency" /></a><p className="display-heading">Estratégia, criação e performance.</p><div><a href="https://www.instagram.com/ag.triz/" target="_blank" rel="noopener noreferrer">@ag.triz</a><a href="mailto:contato@trizagency.com.br">contato@trizagency.com.br</a></div></div><small>© 2026 Triz Agency</small></footer>
   </main>;
 }
