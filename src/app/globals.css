@@ -106,7 +106,7 @@ img{display:block}
 .contact-glow{position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(221,255,187,.4),rgba(221,255,187,.1) 40%,transparent 70%);filter:blur(50px)}
 .illustration-frame{position:relative;width:547px;height:396px}
 .illustration-frame>div{width:547px;height:396px}
-.contact-form-section{scroll-margin-top:32px;border-radius:48px;padding:64px 72px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(400px,1fr);align-items:center;gap:72px}
+.contact-form-section{scroll-margin-top:32px;border-radius:48px;padding:64px 72px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(400px,1fr);align-items:start;gap:72px}
 .contact-form-copy{display:flex;flex-direction:column;align-items:flex-start;gap:28px}
 .contact-form-copy .display-heading{font-size:56px;white-space:normal}
 .contact-form-copy p{font-size:20px;line-height:1.45;font-weight:300;color:rgba(251,242,230,.78);margin:0;max-width:440px}
@@ -123,7 +123,7 @@ img{display:block}
 .revenue-trigger>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .revenue-chevron{width:10px;height:10px;flex:none;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-3px);transition:transform .18s}
 .revenue-dropdown.is-open .revenue-chevron{transform:rotate(225deg) translate(-2px,-1px)}
-.revenue-options{position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:5;max-height:220px;overflow:auto;padding:8px;border:1px solid rgba(221,255,187,.5);border-radius:22px;background:#292929;box-shadow:0 18px 40px rgba(0,0,0,.35);animation:revenue-menu-in .16s ease-out}
+.revenue-options{position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:5;padding:8px;border:1px solid rgba(221,255,187,.5);border-radius:22px;background:#292929;box-shadow:0 18px 40px rgba(0,0,0,.35);animation:revenue-menu-in .16s ease-out}
 .revenue-option{display:block;width:100%;padding:12px 14px;border:0;border-radius:14px;background:transparent;color:rgba(251,242,230,.88);font-size:16px;text-align:left;transition:background .15s,color .15s}
 .revenue-option:hover,.revenue-option:focus-visible,.revenue-option.is-active{outline:none;background:rgba(221,255,187,.12);color:var(--lime)}
 .revenue-option[aria-selected="true"]{background:rgba(221,255,187,.16);color:var(--lime)}
@@ -217,7 +217,7 @@ img{display:block}
   .contact-form{gap:12px}
   .contact-form input:not([type="hidden"]):not([type="checkbox"]){min-height:50px;padding:12px 17px;font-size:15px}
   .revenue-trigger{min-height:50px;padding:12px 17px;font-size:15px}
-  .revenue-options{max-height:200px;padding:6px;border-radius:18px}
+  .revenue-options{padding:6px;border-radius:18px}
   .revenue-option{padding:12px;font-size:15px}
   .contact-form-submit{font-size:16px;padding:12px 26px}
   .contact-form-captcha{justify-content:center;overflow-x:auto}

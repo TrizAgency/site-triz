@@ -4,6 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { sendGAEvent } from "@next/third-parties/google";
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
 export default function ContactForm() {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -12,7 +19,13 @@ export default function ContactForm() {
   const [revenue, setRevenue] = useState("");
   const [revenueOpen, setRevenueOpen] = useState(false);
   const [activeRevenueOption, setActiveRevenueOption] = useState(0);
-  const revenueOptions = ["Até 20 mil", "Entre 20 e 50 mil", "Mais de 50 mil"];
+  const revenueOptions = [
+    "Até 20 mil",
+    "Entre 20 e 50 mil",
+    "Entre 50 e 80 mil",
+    "Entre 80 e 100 mil",
+    "Mais de 100 mil",
+  ];
   const revenueRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -56,6 +69,9 @@ export default function ContactForm() {
 
       setSuccess(true);
       window.fbq?.("track", "Lead");
+      window.gtag?.("event", "conversion", {
+        send_to: "AW-18529815921/jSgXCP6zv78dEPGa2oNF",
+      });
       sendGAEvent("event", "generate_lead", {
         currency: "BRL",
         value: 0,
@@ -83,8 +99,9 @@ export default function ContactForm() {
           <form onSubmit={handleSubmit} className="contact-form">
             <input type="hidden" name="subject" value="Novo lead recebido" />
             <input type="hidden" name="from_name" value="trizagency.com.br" />
-            <input required type="text" name="nome" placeholder="Muito prazer, qual é o seu nome?" aria-label="Nome completo" minLength={2} maxLength={50} />
-            <input required type="email" name="email" placeholder="Qual é o seu melhor email?" aria-label="Melhor email" maxLength={100} />
+            <input required type="text" name="nome" placeholder="Nome" aria-label="Nome completo" minLength={2} maxLength={50} />
+            <input required type="email" name="email" placeholder="Email" aria-label="Melhor email" maxLength={100} />
+            <input required type="tel" name="whatsapp" placeholder="WhatsApp" aria-label="Número de WhatsApp" autoComplete="tel" inputMode="tel" maxLength={20} />
             <input type="text" name="rede social" placeholder="@ nas redes sociais (Instagram/TikTok)" aria-label="@ nas redes sociais (Instagram ou TikTok)" maxLength={100} />
             <input required type="text" name="segmento" placeholder="Qual é o seu segmento de atuação?" aria-label="Segmento de atuação" maxLength={100} />
             <input type="hidden" name="faturamento mensal" value={revenue} />
@@ -150,9 +167,6 @@ export default function ContactForm() {
                 </div>
               )}
             </div>
-            <button disabled={loading} type="submit" className="contact-form-submit">
-              {loading ? "Enviando..." : "Enviar"}
-            </button>
             <div className="contact-form-captcha">
               <HCaptcha
                 sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
@@ -162,6 +176,9 @@ export default function ContactForm() {
                 loadAsync
               />
             </div>
+            <button disabled={loading} type="submit" className="contact-form-submit">
+              {loading ? "Enviando..." : "Enviar"}
+            </button>
             <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
           </form>
         )}

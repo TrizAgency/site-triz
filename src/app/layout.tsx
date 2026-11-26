@@ -15,6 +15,14 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
     <html lang="pt-BR">
       <body>
         {children}
+        <GoogleAnalytics gaId="G-G7THS1FJPZ" />
+        <Script
+          id="google-ads-config"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `gtag('config', 'AW-18529815921');`,
+          }}
+        />
         <Script
           id="meta-pixel"
           strategy="lazyOnload"
@@ -34,7 +42,6 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
           }}
         />
       </body>
-      <GoogleAnalytics gaId="G-G7THS1FJPZ" />
     </html>
   );
 }
